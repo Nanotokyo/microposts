@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+
+  def edit
+  end
+  
+  def update
+    if @user.update(user_params)
+      redirect_to @user , notice: 'プロフィールを編集しました'
+    else
+      render 'edit'
+    end
+  end
+
+  
 
  def edit
   end
