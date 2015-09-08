@@ -12,22 +12,11 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
- def edit
-  end
-  
-  def update
-    if @user.update(user_params)
-      redirect_to @user , notice: 'プロフィールを編集しました'
-    else
-      render 'edit'
-    end
-  end
-
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts
+    @follower = @user.following_users #showの部分でフォロワーの数を表示させたいためで必修ではありません。
+    @followed = @user.follower_users  #showの部分でフォロワーの数を表示させたいためで必修ではありません。
   end
 
   def new
@@ -44,6 +33,19 @@ class UsersController < ApplicationController
     end
   end
   
+  #フォローしているユーザー
+  def followings
+    @user = User.find(params[:id])
+    @follower = @user.following_users
+  end
+
+  #フォローされているユーザー
+  def followers
+    @user = User.find(params[:id])
+    @followed = @user.follower_users
+  end
+
+
   private
   
   def user_params

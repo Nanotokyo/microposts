@@ -7,6 +7,28 @@
         <li><%= link_to "edit" , edit_user_path(@user) %> </li>
       </h1>
     </section>
+    
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    <div class="row">
+      <div class="col-md-3">
+        <p class="text-center"><small>ツイート</small></p>
+        <p class="text-center"><%= @user.microposts.count %></p>
+      </div>
+      <div class="col-md-3">
+        <p class="text-center"><small><%= link_to 'フォロー', followings_user_path(@user) %></small></p>
+        <p class="text-center"><%= @follower.count %></p>
+      </div>
+      <div class="col-md-3">
+        <p class="text-center"><small><%= link_to 'フォロワー', followers_user_path(@user) %></small></p>
+        <p class="text-center"><%= @followed.count %></p>
+      </div>
+    </div>
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    <!-- 必ずしもフォローやフォロワーの数を表示などは表示させなくてもいいと思います。-->
+    
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

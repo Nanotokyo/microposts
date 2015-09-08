@@ -1,0 +1,33 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <div class="row">
+      <div class="col-md-3">
+        <p class="text-center"><small>ツイート</small></p>
+      </div>
+      <div class="col-md-3">
+        <p class="text-center"><small><%= link_to 'フォロー', followings_user_path(@user) %></small></p>
+      </div>
+      <div class="col-md-3">
+        <p class="text-center"><small><%= link_to 'フォロワー', followers_user_path(@user) %></small></p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="col-md-8">
+    <table class="table">
+      <tr class="active">
+        <% @followed.each do |followed| %>
+          <td><%= gravatar_for followed %></td>
+          <td><h3><%= followed.name %></h3></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
+</div>
